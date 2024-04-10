@@ -10,9 +10,13 @@ Instructions
 --------------
 
 docker build -t my-pytorch-app .
-docker run -p 8000:8000 -v my-pytorch-app
+docker run -p 8000:8000 -v D:/datasets:/datasets my_torch_app
 curl -X POST -H "Content-Type: application/json" -d "{\"image_path\": \"cat.3880.jpg\"}" http://localhost:8000
+curl -X POST -H "Content-Type: application/json" -d "{\"image_path\": \"/app/datasets/DogsVsCats/train-val-test/cat.3880.jpg\"}" http://localhost:8000
 
+debugging
+docker run -it --rm my_torch_app /bin/bash
+docker run -it --rm -v D:/datasets:/app/datasets my_torch_app /bin/bash
 '''
 
 
